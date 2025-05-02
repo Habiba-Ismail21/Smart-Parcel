@@ -1,7 +1,5 @@
-# Smart-Parcel
-<h1>
-  Smart Parcel Delivery System
-</h1>
+#   Smart Parcel Delivery System
+
 
 <p>
 
