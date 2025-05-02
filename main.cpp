@@ -32,7 +32,7 @@ int main() {
     string region, city, zone;
 
     while (true) {
-        cout << "\n--- Parcel Management System ---\n";
+        cout << "\n-----------------------------Parcel Management System -----------------------------\n";
         cout << "1. Add Parcel\n";
         cout << "2. Mark Parcel as Delivered\n";
         cout << "3. Cancel Delivery\n";
@@ -45,8 +45,10 @@ int main() {
         cout << "10. Display Delivery Stack\n";
         cout << "11. Reverse Delivery Stack\n";
         cout << "12. Exit\n";
+        cout << "-------------------------------------------------------------------------------------------\n";
         cout << "Enter your choice: ";
         cin >> choice;
+        cout << "-------------------------------------------------------------------------------------------\n";
 
         if (cin.fail()) {
             cin.clear();
@@ -108,6 +110,7 @@ int main() {
 
             outForDelivery.enqueue(id, region, city, zone, priority);
             parcelBST.insert(outForDelivery.rear);
+            cout << "-------------------------------------------------------------------------------------------\n";
             cout << "Parcel added successfully!\n";
             break;
         }
@@ -120,6 +123,7 @@ int main() {
                 parcelBST.deleteByID(deliveredParcel->shipmentID);
                 delete deliveredParcel;
             } else {
+                cout << "-------------------------------------------------------------------------------------------\n";
                 cout << "No parcels in delivery queue!\n";
             }
             break;
@@ -128,9 +132,11 @@ int main() {
             cout << "Enter Shipment ID to cancel: ";
             cin >> id;
             if (outForDelivery.deleteByID(id)) {
+                cout << "-------------------------------------------------------------------------------------------\n";
                 cout << "Parcel canceled and removed from queue.\n";
                 parcelBST.deleteByID(id);
             } else {
+                cout << "-------------------------------------------------------------------------------------------\n";
                 cout << "Parcel not found in out-for-delivery queue.\n";
             }
             break;
@@ -146,21 +152,25 @@ int main() {
         case 6: {
             cout << "Enter shipment ID to search: ";
             cin >> id;
+            cout << "-------------------------------------------------------------------------------------------\n";
             searchByID(id, outForDelivery, delivered);
             break;
         }
         case 7: {
+            cout << "-------------------------------------------------------------------------------------------\n";
             cout << "Search in (1) Out-for-Delivery or (2) Delivered? ";
             int which;
             cin >> which;
             cin.ignore();
             cout << "Enter region: ";
             getline(cin, region);
+            cout << "-------------------------------------------------------------------------------------------\n";
             if (which == 1) searchByRegion(region, outForDelivery);
             else searchByRegion(region, delivered);
             break;
         }
         case 8: {
+            cout << "-------------------------------------------------------------------------------------------\n";
             parcelBST.display();
             break;
         }
@@ -176,6 +186,7 @@ int main() {
                 deliveryStack.push(current);
                 current = current->next;
             }
+            cout << "-------------------------------------------------------------------------------------------\n";
             cout << "All out-for-delivery parcels pushed to stack.\n";
             break;
         }
@@ -188,10 +199,12 @@ int main() {
             break;
         }
         case 12: {
+            cout << "-------------------------------------------------------------------------------------------\n";
             cout << "Exiting. Goodbye!\n";
             return 0;
         }
         default:
+        cout << "-------------------------------------------------------------------------------------------\n";
             cout << "Invalid choice. Try again.\n";
         }
     }
